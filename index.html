@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Guia Visual de Redes para Automação</title>
-    <!-- Font Awesome para ícones -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>RedeView Automação - Guia Visual de Redes Industriais</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -16,62 +15,61 @@
         body {
             background: #ffffff;
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            padding: 30px 20px;
+            padding: 20px;
         }
         .container {
-            max-width: 1200px;
-            width: 100%;
+            max-width: 1300px;
+            margin: 0 auto;
         }
 
-        /* HEADER + LOGO */
+        /* HEADER */
         .header {
             display: flex;
             align-items: center;
             flex-wrap: wrap;
             gap: 20px;
             margin-bottom: 30px;
+            padding: 20px 25px;
+            background: #f8f8f8;
+            border-radius: 24px;
+            border: 1px solid #eaeaea;
         }
         .logo-box {
-            background: #eaeaea;       /* cinza claro igual aos cards */
-            padding: 12px 18px 12px 14px;
-            border-radius: 20px;
+            background: #eaeaea;
+            padding: 12px 18px;
+            border-radius: 18px;
             display: flex;
             align-items: center;
             gap: 14px;
             border: 1px solid #ddd;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
         }
         .logo-box svg {
             display: block;
         }
         .logo-text {
-            font-size: 26px;
+            font-size: 28px;
             font-weight: 700;
-            color: #0a2a44;          /* azul marinho */
-            letter-spacing: -0.5px;
+            color: #0a2a44;
         }
-        .logo-sub {
+        .header h1 {
+            font-size: 28px;
+            color: #0a2a44;
+            font-weight: 600;
+        }
+        .header .sub {
             font-size: 15px;
-            font-weight: 500;
             color: #0a2a44;
             background: #eaeaea;
             padding: 6px 18px;
             border-radius: 30px;
             border: 1px solid #ddd;
         }
-        h1 {
-            font-size: 30px;
-            color: #0a2a44;
-            font-weight: 600;
-        }
 
         /* ABAS */
         .tabs {
             display: flex;
             gap: 12px;
-            margin: 30px 0 25px 0;
+            margin: 20px 0 25px;
             border-bottom: 2px solid #eaeaea;
             padding-bottom: 12px;
             flex-wrap: wrap;
@@ -79,64 +77,62 @@
         .tab-btn {
             background: #f0f0f0;
             border: none;
-            padding: 12px 34px;
+            padding: 12px 32px;
             font-size: 17px;
             font-weight: 600;
             color: #3a4a5e;
             border-radius: 40px;
             cursor: pointer;
-            transition: 0.25s;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+            transition: 0.3s;
         }
         .tab-btn:hover {
-            background: #e2e6ed;
+            background: #e0e0e0;
         }
         .tab-btn.active {
             background: #0a2a44;
             color: white;
-            box-shadow: 0 4px 12px rgba(10,42,68,0.25);
+        }
+        .tab-btn i {
+            margin-right: 10px;
         }
 
         .tab-pane {
             display: none;
-            animation: fadeUp 0.35s ease;
+            animation: fade 0.4s;
         }
         .tab-pane.active {
             display: block;
         }
-        @keyframes fadeUp {
-            0% { opacity: 0.3; transform: translateY(8px); }
-            100% { opacity: 1; transform: translateY(0); }
+        @keyframes fade {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* CARDS (cinza claro) */
+        /* ===== CARDS PRINCIPAIS ===== */
         .card-grid {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            justify-content: center;
-            margin: 20px 0 25px;
+            margin: 25px 0;
         }
         .card {
             background: #eaeaea;
             border-radius: 28px;
-            padding: 30px 25px 28px;
-            flex: 1 1 230px;
-            max-width: 280px;
-            min-width: 200px;
+            padding: 30px 25px 25px;
             text-align: center;
             cursor: pointer;
-            transition: 0.25s;
-            border: 1px solid #e2e2e2;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            transition: 0.3s;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            position: relative;
         }
         .card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
         }
         .card .icon {
-            width: 76px;
-            height: 76px;
+            width: 80px;
+            height: 80px;
             background: #d4dce8;
             border-radius: 50%;
             display: flex;
@@ -145,25 +141,34 @@
             margin: 0 auto 16px;
         }
         .card .icon i {
-            font-size: 38px;
-            color: #0a2a44;           /* azul marinho */
+            font-size: 40px;
+            color: #0a2a44;
         }
         .card h3 {
             color: #0a2a44;
             font-size: 22px;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
+        }
+        .card .tag {
+            display: inline-block;
+            background: #0a2a44;
+            color: white;
+            font-size: 12px;
+            padding: 3px 16px;
+            border-radius: 30px;
+            margin-top: 4px;
         }
         .card .explicacao {
             background: white;
             padding: 14px 18px;
-            border-radius: 40px;
+            border-radius: 30px;
             font-size: 15px;
             color: #1a2a3a;
             margin-top: 16px;
             display: none;
-            border: 1px solid #cecece;
-            line-height: 1.5;
-            box-shadow: inset 0 1px 4px rgba(0,0,0,0.02);
+            border: 1px solid #d0d0d0;
+            line-height: 1.6;
+            text-align: left;
         }
         .card .explicacao.show {
             display: block;
@@ -171,61 +176,84 @@
         .card .explicacao strong {
             color: #0a2a44;
         }
-        .card .tag {
-            display: inline-block;
-            background: #0a2a44;
-            color: white;
-            font-size: 11px;
-            padding: 2px 14px;
-            border-radius: 30px;
-            margin-top: 6px;
-            letter-spacing: 0.3px;
+
+        /* ===== SUB-CARDS (informações detalhadas) ===== */
+        .sub-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0 30px;
+        }
+        .sub-card {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            border: 1px solid #e8e8e8;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            transition: 0.2s;
+        }
+        .sub-card:hover {
+            box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+        }
+        .sub-card h4 {
+            color: #0a2a44;
+            font-size: 17px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .sub-card p {
+            color: #3a4a5e;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .sub-card i {
+            color: #0a2a44;
+            font-size: 20px;
         }
 
-        /* TOPOLOGIAS */
+        /* ===== TOPOLOGIAS ===== */
         .topo-buttons {
             display: flex;
             gap: 18px;
             justify-content: center;
             flex-wrap: wrap;
-            margin: 10px 0 30px;
+            margin: 15px 0 25px;
         }
         .topo-btn {
             background: white;
             border: 2px solid #d0d0d0;
-            padding: 14px 38px;
+            padding: 14px 40px;
             border-radius: 50px;
             font-size: 17px;
             font-weight: 600;
             color: #0a2a44;
             cursor: pointer;
-            transition: 0.25s;
+            transition: 0.3s;
         }
         .topo-btn:hover {
-            background: #f2f4f8;
+            background: #f0f0f0;
         }
         .topo-btn.active {
             background: #0a2a44;
             color: white;
             border-color: #0a2a44;
-            box-shadow: 0 4px 14px rgba(10,42,68,0.25);
         }
 
         .topo-container {
             display: flex;
             justify-content: center;
-            margin: 10px 0 20px;
         }
         .topo-card {
             background: #eaeaea;
             border-radius: 28px;
-            padding: 32px 36px;
-            max-width: 720px;
+            padding: 35px 40px;
+            max-width: 800px;
             width: 100%;
             border: 1px solid #e0e0e0;
             display: none;
-            animation: fadeUp 0.3s;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            animation: fade 0.3s;
         }
         .topo-card.active {
             display: block;
@@ -233,33 +261,27 @@
         .topo-card h3 {
             color: #0a2a44;
             font-size: 26px;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             border-bottom: 3px solid #d0d8e0;
-            padding-bottom: 10px;
+            padding-bottom: 12px;
         }
         .topo-card .explicacao {
             background: white;
-            padding: 16px 22px;
-            border-radius: 40px;
+            padding: 18px 24px;
+            border-radius: 30px;
             font-size: 16px;
             color: #1a2a3a;
-            margin: 16px 0 20px;
+            margin: 15px 0 20px;
             border: 1px solid #d0d0d0;
-            line-height: 1.6;
-        }
-        .topo-card .explicacao strong {
-            color: #0a2a44;
+            line-height: 1.7;
         }
         .lista {
-            margin: 14px 0;
+            margin: 12px 0;
         }
         .lista h4 {
             color: #0a2a44;
             font-size: 17px;
             margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
         .lista ul {
             list-style: none;
@@ -268,7 +290,7 @@
         .lista li {
             padding: 10px 18px;
             margin: 6px 0;
-            border-radius: 40px;
+            border-radius: 30px;
             font-size: 15px;
             background: white;
             border: 1px solid #e0e0e0;
@@ -289,67 +311,53 @@
             color: #0a2a44;
         }
 
-        /* SEÇÃO MULTIMÍDIA: vídeos + notícias + entrevistas */
+        /* ===== SEÇÃO MULTIMÍDIA ===== */
         .media-section {
             margin-top: 50px;
             border-top: 2px solid #eaeaea;
             padding-top: 35px;
         }
         .media-section h2 {
-            font-size: 26px;
+            font-size: 28px;
             color: #0a2a44;
             margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 14px;
         }
         .media-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
         }
         .media-card {
             background: #f7f7f7;
             border-radius: 24px;
-            padding: 20px 20px 25px;
+            padding: 25px;
             border: 1px solid #e8e8e8;
-            transition: 0.2s;
         }
-        .media-card:hover {
-            background: #f0f0f0;
-        }
-        .media-card .media-icon {
+        .media-card .icon-big {
             font-size: 40px;
             color: #0a2a44;
             margin-bottom: 10px;
         }
         .media-card h4 {
             color: #0a2a44;
-            font-size: 18px;
-            margin-bottom: 6px;
+            font-size: 20px;
+            margin-bottom: 8px;
         }
         .media-card p {
             color: #3a4a5e;
-            font-size: 14px;
-            line-height: 1.5;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 12px;
         }
-        .media-card .badge {
-            display: inline-block;
-            background: #0a2a44;
-            color: white;
-            font-size: 11px;
-            padding: 3px 14px;
-            border-radius: 30px;
-            margin-top: 8px;
-        }
-        /* vídeo embed responsivo */
+
+        /* Vídeos */
         .video-wrapper {
             position: relative;
             padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
-            border-radius: 18px;
-            margin-top: 12px;
+            border-radius: 16px;
+            margin: 12px 0;
             background: #d0d0d0;
         }
         .video-wrapper iframe {
@@ -359,42 +367,77 @@
             width: 100%;
             height: 100%;
             border: 0;
-            border-radius: 18px;
+            border-radius: 16px;
         }
+        .video-title {
+            font-size: 14px;
+            color: #0a2a44;
+            font-weight: 600;
+            margin: 6px 0 12px;
+        }
+        .video-title i {
+            margin-right: 8px;
+        }
+
+        /* Notícias */
         .noticia-item {
             background: white;
             padding: 14px 18px;
-            border-radius: 18px;
-            margin: 8px 0;
-            border-left: 4px solid #0a2a44;
+            border-radius: 16px;
+            margin: 10px 0;
+            border-left: 5px solid #0a2a44;
             font-size: 14px;
+            line-height: 1.5;
         }
         .noticia-item strong {
             color: #0a2a44;
         }
-        .noticia-item i {
-            color: #0a2a44;
-            margin-right: 8px;
+        .noticia-item .date {
+            display: block;
+            font-size: 12px;
+            color: #8a9aa0;
+            margin-top: 4px;
         }
+
+        /* Entrevistas */
         .entrevista-item {
             background: white;
-            padding: 14px 18px;
-            border-radius: 18px;
-            margin: 8px 0;
+            padding: 16px 20px;
+            border-radius: 16px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+        }
+        .entrevista-item .perfil {
             display: flex;
             align-items: center;
             gap: 14px;
-            border: 1px solid #ddd;
+            margin-bottom: 8px;
         }
-        .entrevista-item i {
-            font-size: 28px;
+        .entrevista-item .perfil i {
+            font-size: 36px;
             color: #0a2a44;
         }
-        .entrevista-item .info {
-            font-size: 14px;
-        }
-        .entrevista-item .info strong {
+        .entrevista-item .perfil .nome {
+            font-weight: 700;
             color: #0a2a44;
+            font-size: 16px;
+        }
+        .entrevista-item .perfil .cargo {
+            font-size: 13px;
+            color: #5a6a7a;
+        }
+        .entrevista-item .depoimento {
+            font-size: 15px;
+            color: #1a2a3a;
+            line-height: 1.6;
+            font-style: italic;
+            padding: 8px 0 0 10px;
+            border-top: 1px solid #eee;
+            margin-top: 8px;
+        }
+        .entrevista-item .depoimento i {
+            color: #0a2a44;
+            margin-right: 6px;
         }
 
         .footer {
@@ -406,48 +449,50 @@
             padding-top: 25px;
         }
 
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
             .header { flex-direction: column; align-items: flex-start; }
-            .card-grid { flex-direction: column; align-items: center; }
-            .card { max-width: 100%; width: 100%; }
+            .card-grid { grid-template-columns: 1fr; }
+            .sub-cards { grid-template-columns: 1fr; }
+            .media-grid { grid-template-columns: 1fr; }
             .topo-card { padding: 20px; }
             .topo-buttons { flex-direction: column; align-items: center; }
-            .topo-btn { width: 100%; max-width: 300px; text-align: center; }
-            .tabs { justify-content: center; }
-            .tab-btn { padding: 10px 20px; font-size: 15px; }
+            .topo-btn { width: 100%; max-width: 320px; text-align: center; }
         }
     </style>
 </head>
 <body>
 <div class="container">
 
-    <!-- HEADER com LOGO (verde + quadrado cinza) -->
+    <!-- HEADER -->
     <div class="header">
         <div class="logo-box">
-            <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+            <svg width="56" height="56" viewBox="0 0 56 56">
                 <rect x="2" y="2" width="52" height="52" rx="16" fill="#eaeaea" stroke="#c0c8d0" stroke-width="2.5"/>
-                <!-- desenho verde: rede com 3 nós -->
-                <circle cx="28" cy="22" r="5" fill="#2e7d32" stroke="#2e7d32" stroke-width="2"/>
-                <circle cx="16" cy="36" r="5" fill="#2e7d32" stroke="#2e7d32" stroke-width="2"/>
-                <circle cx="40" cy="36" r="5" fill="#2e7d32" stroke="#2e7d32" stroke-width="2"/>
+                <circle cx="28" cy="22" r="5" fill="#2e7d32"/>
+                <circle cx="16" cy="36" r="5" fill="#2e7d32"/>
+                <circle cx="40" cy="36" r="5" fill="#2e7d32"/>
                 <line x1="25" y1="25" x2="18" y2="33" stroke="#2e7d32" stroke-width="4" stroke-linecap="round"/>
                 <line x1="31" y1="25" x2="38" y2="33" stroke="#2e7d32" stroke-width="4" stroke-linecap="round"/>
                 <line x1="28" y1="27" x2="28" y2="31" stroke="#2e7d32" stroke-width="4" stroke-linecap="round"/>
             </svg>
-            <span class="logo-text">Guia Visual</span>
+            <span class="logo-text">RedeView</span>
         </div>
-        <h1>Redes para Automação</h1>
-        <span class="logo-sub"><i class="fas fa-industry" style="margin-right: 6px;"></i>chão de fábrica</span>
+        <h1>Automação</h1>
+        <span class="sub"><i class="fas fa-industry"></i> Visualize o futuro da sua fábrica</span>
     </div>
 
     <!-- ABAS -->
     <div class="tabs">
-        <button class="tab-btn active" data-tab="cabos"><i class="fas fa-network-wired" style="margin-right: 8px;"></i>Cabos Industriais</button>
-        <button class="tab-btn" data-tab="topologias"><i class="fas fa-sitemap" style="margin-right: 8px;"></i>Topologias</button>
+        <button class="tab-btn active" data-tab="cabos"><i class="fas fa-network-wired"></i>Cabos Industriais</button>
+        <button class="tab-btn" data-tab="topologias"><i class="fas fa-sitemap"></i>Topologias</button>
     </div>
 
-    <!-- ========== ABA 1: CABOS ========== -->
+    <!-- ============================================ -->
+    <!-- ABA 1: CABOS INDUSTRIAIS -->
+    <!-- ============================================ -->
     <div id="cabos" class="tab-pane active">
+
+        <!-- Cards principais -->
         <div class="card-grid">
             <!-- Par Trançado -->
             <div class="card" onclick="toggleExplicacao(this)">
@@ -455,7 +500,8 @@
                 <h3>Par Trançado</h3>
                 <span class="tag">Ethernet/IP · PROFINET</span>
                 <div class="explicacao">
-                    <strong>Onde é usado:</strong> Conexão de CLPs, I/O remoto, drives e sensores em distâncias curtas (até 100m). Muito comum em células de manufatura e ilhas de I/O.
+                    <strong>📍 Onde é usado:</strong> Conexão de CLPs, I/O remoto, drives e sensores em distâncias curtas (até 100m). É a espinha dorsal das células de manufatura modernas.<br>
+                    <strong>🔧 Aplicações:</strong> Redes de controle em tempo real, comunicação entre inversores de frequência e sistemas supervisórios.
                 </div>
             </div>
 
@@ -465,7 +511,8 @@
                 <h3>Fibra Óptica</h3>
                 <span class="tag">Longa distância · Imune a ruído</span>
                 <div class="explicacao">
-                    <strong>Onde é usado:</strong> Longas distâncias (até vários km) e ambientes com alta interferência eletromagnética. Ideal para subestações, plantas siderúrgicas e backbone.
+                    <strong>📍 Onde é usado:</strong> Longas distâncias (até 40km+) e ambientes com alta interferência eletromagnética. Ideal para subestações elétricas, plantas siderúrgicas e interconexão de prédios industriais.<br>
+                    <strong>🔧 Aplicações:</strong> Backbone de fábricas, redes de monitoramento de vibração em turbinas, sistemas de segurança e CFTV.
                 </div>
             </div>
 
@@ -473,38 +520,60 @@
             <div class="card" onclick="toggleExplicacao(this)">
                 <div class="icon"><i class="fas fa-wifi"></i></div>
                 <h3>Wireless</h3>
-                <span class="tag">Wi-Fi · 5G industrial</span>
+                <span class="tag">Wi-Fi · 5G</span>
                 <div class="explicacao">
-                    <strong>Onde é usado:</strong> AGVs, empilhadeiras, robôs móveis e dispositivos que precisam de mobilidade. Redes Wi-Fi industrial ou 5G para telemetria.
+                    <strong>📍 Onde é usado:</strong> AGVs (veículos guiados), empilhadeiras, robôs móveis e dispositivos que precisam de mobilidade. Também usado em áreas de difícil acesso para cabeamento.<br>
+                    <strong>🔧 Aplicações:</strong> Telemetria de equipamentos móveis, monitoramento de estoque com RFID, comunicação com sensores em áreas remotas.
                 </div>
             </div>
         </div>
-        <p style="text-align:center; color:#5a6a7a; font-size:14px; background:#f5f5f5; padding:8px; border-radius:40px;">
-            <i class="fas fa-hand-pointer" style="margin-right:8px;"></i>Clique em cada card para ver a aplicação na fábrica
-        </p>
+
+        <!-- Sub-cards com informações detalhadas -->
+        <div class="sub-cards">
+            <div class="sub-card">
+                <h4><i class="fas fa-shield-alt"></i> Blindagem</h4>
+                <p>Cabos de par trançado podem ter blindagem (STP) para maior proteção contra interferências eletromagnéticas em ambientes industriais severos.</p>
+            </div>
+            <div class="sub-card">
+                <h4><i class="fas fa-tachometer-alt"></i> Velocidade</h4>
+                <p>Fibra óptica suporta velocidades de até 100 Gbps, ideal para aplicações que exigem alta largura de banda como visão computacional e IA.</p>
+            </div>
+            <div class="sub-card">
+                <h4><i class="fas fa-satellite-dish"></i> Alcance</h4>
+                <p>Wireless 5G industrial oferece latência inferior a 1ms e alcance de até 1km em campo aberto, revolucionando a mobilidade na fábrica.</p>
+            </div>
+        </div>
+
+        <!-- Dica de interação -->
+        <div style="text-align:center; color:#5a6a7a; font-size:14px; background:#f5f5f5; padding:10px; border-radius:40px; margin:10px 0 20px;">
+            <i class="fas fa-hand-pointer"></i> Clique em cada card para ver a aplicação detalhada
+        </div>
     </div>
 
-    <!-- ========== ABA 2: TOPOLOGIAS ========== -->
+    <!-- ============================================ -->
+    <!-- ABA 2: TOPOLOGIAS -->
+    <!-- ============================================ -->
     <div id="topologias" class="tab-pane">
         <div class="topo-buttons">
-            <button class="topo-btn active" data-topo="estrela"><i class="fas fa-star" style="margin-right:8px;"></i>Layout em Estrela</button>
-            <button class="topo-btn" data-topo="barramento"><i class="fas fa-grip-lines" style="margin-right:8px;"></i>Layout em Barramento</button>
+            <button class="topo-btn active" data-topo="estrela"><i class="fas fa-star"></i>Layout em Estrela</button>
+            <button class="topo-btn" data-topo="barramento"><i class="fas fa-grip-lines"></i>Layout em Barramento</button>
+            <button class="topo-btn" data-topo="anel"><i class="fas fa-circle"></i>Layout em Anel</button>
         </div>
 
         <div class="topo-container">
             <!-- Estrela -->
             <div id="estrela" class="topo-card active">
-                <h3><i class="fas fa-star" style="color:#f1c40f; margin-right:10px;"></i>Estrela</h3>
+                <h3><i class="fas fa-star" style="color:#f1c40f;"></i> Estrela</h3>
                 <div class="explicacao">
                     Cada dispositivo conectado a um <strong>switch central</strong>. É a topologia mais utilizada em células de manufatura e ilhas de I/O, oferecendo alta flexibilidade e desempenho.
                 </div>
                 <div class="lista">
                     <h4><i class="fas fa-check-circle" style="color:#2e7d32;"></i> Vantagens</h4>
                     <ul>
-                        <li class="vantagem"><i class="fas fa-check"></i> Falha em um cabo não afeta os demais</li>
+                        <li class="vantagem"><i class="fas fa-check"></i> Falha em um cabo não afeta os demais dispositivos</li>
                         <li class="vantagem"><i class="fas fa-check"></i> Facilidade de diagnóstico e manutenção</li>
                         <li class="vantagem"><i class="fas fa-check"></i> Escalável para adicionar novos pontos</li>
-                        <li class="vantagem"><i class="fas fa-check"></i> Melhor desempenho (comunicação dedicada)</li>
+                        <li class="vantagem"><i class="fas fa-check"></i> Melhor desempenho com comunicação dedicada</li>
                     </ul>
                 </div>
                 <div class="lista">
@@ -519,7 +588,7 @@
 
             <!-- Barramento -->
             <div id="barramento" class="topo-card">
-                <h3><i class="fas fa-grip-lines" style="color:#e67e22; margin-right:10px;"></i>Barramento</h3>
+                <h3><i class="fas fa-grip-lines" style="color:#e67e22;"></i> Barramento</h3>
                 <div class="explicacao">
                     Todos os dispositivos compartilham o <strong>mesmo cabo backbone</strong>. Topologia mais simples e econômica, ainda usada em redes legadas e malhas simples.
                 </div>
@@ -541,90 +610,157 @@
                     </ul>
                 </div>
             </div>
+
+            <!-- Anel -->
+            <div id="anel" class="topo-card">
+                <h3><i class="fas fa-circle" style="color:#2980b9;"></i> Anel</h3>
+                <div class="explicacao">
+                    Cada dispositivo conectado a dois vizinhos, formando um <strong>círculo</strong>. Usada em redes com alta redundância, como em sistemas de segurança e controle crítico.
+                </div>
+                <div class="lista">
+                    <h4><i class="fas fa-check-circle" style="color:#2e7d32;"></i> Vantagens</h4>
+                    <ul>
+                        <li class="vantagem"><i class="fas fa-check"></i> Alta redundância com anel duplo</li>
+                        <li class="vantagem"><i class="fas fa-check"></i> Tempo de recuperação rápido (MSRP)</li>
+                        <li class="vantagem"><i class="fas fa-check"></i> Distribuição equilibrada de tráfego</li>
+                    </ul>
+                </div>
+                <div class="lista">
+                    <h4><i class="fas fa-times-circle" style="color:#c62828;"></i> Desvantagens</h4>
+                    <ul>
+                        <li class="desvantagem"><i class="fas fa-times"></i> Complexidade de configuração</li>
+                        <li class="desvantagem"><i class="fas fa-times"></i> Custo mais elevado com equipamentos</li>
+                        <li class="desvantagem"><i class="fas fa-times"></i> Diagnóstico mais trabalhoso</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- ========== SEÇÃO MULTIMÍDIA ========== -->
+    <!-- ============================================ -->
+    <!-- SEÇÃO MULTIMÍDIA: VÍDEOS, NOTÍCIAS E ENTREVISTAS -->
+    <!-- ============================================ -->
     <div class="media-section">
-        <h2><i class="fas fa-play-circle" style="color:#0a2a44;"></i> Multimídia · Exemplos & Notícias</h2>
+        <h2><i class="fas fa-play-circle" style="color:#0a2a44;"></i> RedeView Multimídia · Vídeos, Notícias e Entrevistas</h2>
+
         <div class="media-grid">
             <!-- COLUNA 1: VÍDEOS -->
             <div class="media-card">
-                <div class="media-icon"><i class="fas fa-video"></i></div>
-                <h4>Vídeos</h4>
-                <p>Assista a exemplos práticos de redes industriais no chão de fábrica.</p>
+                <div class="icon-big"><i class="fas fa-video"></i></div>
+                <h4>Vídeos Técnicos</h4>
+                <p>Assista a aulas e demonstrações práticas sobre redes industriais.</p>
+
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/Ko2B7C7K8fI" title="Redes Industriais" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/Ko2B7C7K8fI" title="Redes Industriais - Aula Completa" allowfullscreen></iframe>
                 </div>
-                <div style="margin-top:8px; font-size:13px; color:#0a2a44;">
-                    <i class="fas fa-play-circle"></i> Como funciona uma rede PROFINET
+                <div class="video-title"><i class="fas fa-play-circle"></i> Aula: Redes Industriais e Protocolos</div>
+
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/4fyW1m5t2-A" title="Fibra Óptica na Indústria" allowfullscreen></iframe>
                 </div>
-                <div class="video-wrapper" style="margin-top:12px;">
-                    <iframe src="https://www.youtube.com/embed/4fyW1m5t2-A" title="Fibra Óptica Industrial" allowfullscreen></iframe>
+                <div class="video-title"><i class="fas fa-play-circle"></i> Instalação de Fibra Óptica em Fábricas</div>
+
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/RjJlUcvJqSY" title="Redes Wireless Industriais" allowfullscreen></iframe>
                 </div>
-                <div style="margin-top:8px; font-size:13px; color:#0a2a44;">
-                    <i class="fas fa-play-circle"></i> Fibra óptica em ambientes agressivos
-                </div>
+                <div class="video-title"><i class="fas fa-play-circle"></i> Wireless Industrial: 5G e Wi-Fi</div>
             </div>
 
             <!-- COLUNA 2: NOTÍCIAS -->
             <div class="media-card">
-                <div class="media-icon"><i class="fas fa-newspaper"></i></div>
-                <h4>Notícias</h4>
-                <p>As últimas tendências em redes para automação industrial.</p>
+                <div class="icon-big"><i class="fas fa-newspaper"></i></div>
+                <h4>Notícias do Setor</h4>
+                <p>As últimas tendências e inovações em redes para automação.</p>
+
                 <div class="noticia-item">
-                    <i class="fas fa-bolt"></i> <strong>5G industrial:</strong> novas redes wireless chegam às fábricas em 2025.
+                    <strong><i class="fas fa-bolt"></i> 5G Industrial chega ao Brasil</strong>
+                    <p>Operadoras anunciam cobertura 5G em parques industriais, prometendo latência de 1ms para aplicações críticas.</p>
+                    <span class="date"><i class="far fa-calendar-alt"></i> 15 de Junho, 2026</span>
                 </div>
+
                 <div class="noticia-item">
-                    <i class="fas fa-shield-alt"></i> <strong>Segurança em redes:</strong> ataques cibernéticos crescem 40% na indústria.
+                    <strong><i class="fas fa-shield-alt"></i> Nova norma de segurança cibernética</strong>
+                    <p>IEC 62443 ganha novas diretrizes para redes industriais, exigindo segmentação e monitoramento contínuo.</p>
+                    <span class="date"><i class="far fa-calendar-alt"></i> 10 de Junho, 2026</span>
                 </div>
+
                 <div class="noticia-item">
-                    <i class="fas fa-microchip"></i> <strong>Ethernet TSN:</strong> a nova geração de redes determinísticas.
+                    <strong><i class="fas fa-microchip"></i> Ethernet TSN em equipamentos</strong>
+                    <p>Fabricantes lançam switches e controladores com suporte a Time-Sensitive Networking para redes determinísticas.</p>
+                    <span class="date"><i class="far fa-calendar-alt"></i> 5 de Junho, 2026</span>
                 </div>
+
                 <div class="noticia-item">
-                    <i class="fas fa-globe"></i> <strong>IIoT:</strong> fábricas conectadas aumentam produtividade em 25%.
-                </div>
-                <div style="margin-top:10px; font-size:13px; color:#6a7a8a;">
-                    <i class="fas fa-calendar-alt"></i> Atualizado em Junho 2026
+                    <strong><i class="fas fa-robot"></i> IA otimiza redes de fábrica</strong>
+                    <p>Algoritmos de machine learning são usados para prever falhas e otimizar o tráfego em redes industriais.</p>
+                    <span class="date"><i class="far fa-calendar-alt"></i> 28 de Maio, 2026</span>
                 </div>
             </div>
 
             <!-- COLUNA 3: ENTREVISTAS -->
             <div class="media-card">
-                <div class="media-icon"><i class="fas fa-microphone-alt"></i></div>
-                <h4>Entrevistas</h4>
-                <p>Especialistas comentam sobre redes no chão de fábrica.</p>
+                <div class="icon-big"><i class="fas fa-microphone-alt"></i></div>
+                <h4>Entrevistas com Especialistas</h4>
+                <p>Opiniões e análises de profissionais da indústria.</p>
+
                 <div class="entrevista-item">
-                    <i class="fas fa-user-circle"></i>
-                    <div class="info">
-                        <strong>Carlos Mendes</strong> — Engenheiro de Automação<br>
-                        <span style="font-size:13px; color:#4a5a6a;">"A fibra óptica revolucionou a comunicação em plantas siderúrgicas."</span>
+                    <div class="perfil">
+                        <i class="fas fa-user-circle"></i>
+                        <div>
+                            <div class="nome">Carlos Mendes</div>
+                            <div class="cargo">Engenheiro de Automação · 25 anos de experiência</div>
+                        </div>
+                    </div>
+                    <div class="depoimento">
+                        <i class="fas fa-quote-left"></i> "A fibra óptica revolucionou a comunicação em plantas siderúrgicas. Hoje conseguimos monitorar equipamentos a quilômetros de distância com total confiabilidade, algo impensável há 10 anos."
                     </div>
                 </div>
+
                 <div class="entrevista-item">
-                    <i class="fas fa-user-circle"></i>
-                    <div class="info">
-                        <strong>Dra. Fernanda Lima</strong> — Pesquisadora em Redes<br>
-                        <span style="font-size:13px; color:#4a5a6a;">"O wireless 5G vai permitir uma flexibilidade nunca vista antes."</span>
+                    <div class="perfil">
+                        <i class="fas fa-user-circle"></i>
+                        <div>
+                            <div class="nome">Dra. Fernanda Lima</div>
+                            <div class="cargo">Pesquisadora em Redes · Doutora pela USP</div>
+                        </div>
+                    </div>
+                    <div class="depoimento">
+                        <i class="fas fa-quote-left"></i> "O wireless 5G vai permitir uma flexibilidade nunca vista antes. Fábricas poderão reorganizar suas linhas de produção em minutos, sem a necessidade de recabeamento. Isso é um game-changer."
                     </div>
                 </div>
+
                 <div class="entrevista-item">
-                    <i class="fas fa-user-circle"></i>
-                    <div class="info">
-                        <strong>Roberto Alves</strong> — Gerente de TI Industrial<br>
-                        <span style="font-size:13px; color:#4a5a6a;">"A topologia em estrela ainda é a mais confiável para células de manufatura."</span>
+                    <div class="perfil">
+                        <i class="fas fa-user-circle"></i>
+                        <div>
+                            <div class="nome">Roberto Alves</div>
+                            <div class="cargo">Gerente de TI Industrial · Siemens</div>
+                        </div>
+                    </div>
+                    <div class="depoimento">
+                        <i class="fas fa-quote-left"></i> "A topologia em estrela ainda é a mais confiável para células de manufatura, mas estamos vendo um crescimento enorme do anel com redundância, especialmente em sistemas críticos onde o downtime não é aceitável."
                     </div>
                 </div>
-                <div style="margin-top:10px; font-size:13px; color:#6a7a8a;">
-                    <i class="fas fa-quote-right"></i> Entrevistas exclusivas para o Guia Visual
+
+                <div class="entrevista-item">
+                    <div class="perfil">
+                        <i class="fas fa-user-circle"></i>
+                        <div>
+                            <div class="nome">Mariana Costa</div>
+                            <div class="cargo">Especialista em Cibersegurança Industrial</div>
+                        </div>
+                    </div>
+                    <div class="depoimento">
+                        <i class="fas fa-quote-left"></i> "Segmentar a rede e monitorar o tráfego em tempo real é fundamental. Os ataques estão cada vez mais sofisticados, e a indústria precisa se preparar com firewalls industriais e sistemas de detecção."
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="footer">
-        <i class="fas fa-network-wired" style="margin-right:8px; color:#0a2a44;"></i>
-        Guia Visual de Redes para Automação • Conteúdo técnico para o chão de fábrica
+        <i class="fas fa-network-wired" style="color:#0a2a44;"></i>
+        RedeView Automação · Visualize o futuro da sua fábrica
         <br><span style="font-size:12px; color:#9aaab0;">© 2026 · Todos os direitos reservados</span>
     </div>
 </div>
@@ -641,50 +777,23 @@
         btn.addEventListener('click', function() {
             tabBtns.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
-
             const tab = this.dataset.tab;
             Object.keys(panes).forEach(key => {
                 panes[key].classList.remove('active');
             });
-            if (tab === 'cabos') panes.cabos.classList.add('active');
-            else if (tab === 'topologias') panes.topologias.classList.add('active');
+            panes[tab].classList.add('active');
         });
     });
 
-    // ===== CARDS: toggle explicação =====
+    // ===== CARDS =====
     function toggleExplicacao(card) {
         const exp = card.querySelector('.explicacao');
         if (exp) exp.classList.toggle('show');
     }
 
-    // ===== TOPOLOGIAS: botões =====
+    // ===== TOPOLOGIAS =====
     const topoBtns = document.querySelectorAll('.topo-btn');
     const topoCards = {
         estrela: document.getElementById('estrela'),
-        barramento: document.getElementById('barramento')
-    };
-
-    topoBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            topoBtns.forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-
-            const tipo = this.dataset.topo;
-            Object.keys(topoCards).forEach(key => {
-                topoCards[key].classList.remove('active');
-            });
-            if (tipo === 'estrela') topoCards.estrela.classList.add('active');
-            else if (tipo === 'barramento') topoCards.barramento.classList.add('active');
-        });
-    });
-
-    // Inicialização: garantir que a aba "cabos" e a topologia "estrela" estejam visíveis
-    document.addEventListener('DOMContentLoaded', function() {
-        // já está ok no HTML, mas garantimos:
-        document.getElementById('cabos').classList.add('active');
-        document.getElementById('estrela').classList.add('active');
-    });
-</script>
-
-</body>
-</html>
+        barramento: document.getElementById('barramento'),
+        anel: document.getElementById('
